@@ -1,41 +1,78 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML API - House Price Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Arimo&family=Hind:wght@300&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
 </head>
-
 <body>
- <div class="login">
-	<h1>California House Price Prediction</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-        <input type="text" name="MedInc" placeholder="MedInc" required="required" /><br>
-        <input type="text" name="HouseAge" placeholder="HouseAge" required="required" /><br>
-        <input type="text" name="AveRooms" placeholder="AveRooms" required="required" /><br>
-        <input type="text" name="AveBedrms" placeholder="AveBedrms" required="required" /><br>
-        <input type="text" name="Population" placeholder="Population" required="required" /><br>
-        <input type="text" name="AveOccup" placeholder="AveOccup" required="required" /><br>
-        <input type="text" name="Latitude" placeholder="Latitude" required="required" /><br>
-        <input type="text" name="Longitude" placeholder="Longitude" required="required" /><br>    
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
-
+    <div class="container">
+        <h1>California House Price Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="MedInc" placeholder="Median Income" required>
+            <input type="text" name="HouseAge" placeholder="House Age" required>
+            <input type="text" name="AveRooms" placeholder="Average Rooms" required>
+            <input type="text" name="AveBedrms" placeholder="Average Bedrooms" required>
+            <input type="text" name="Population" placeholder="Population" required>
+            <input type="text" name="AveOccup" placeholder="Average Occupancy" required>
+            <input type="text" name="Latitude" placeholder="Latitude" required>
+            <input type="text" name="Longitude" placeholder="Longitude" required>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+        <div class="prediction">{{ prediction_text }}</div>
+    </div>
 </body>
 </html>
