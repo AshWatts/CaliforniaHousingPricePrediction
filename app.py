@@ -32,3 +32,52 @@ def predict():
     
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# Adjustments required to run the app using Docker
+
+# import pickle 
+# from flask import Flask, request, jsonify, render_template
+# import numpy as np
+
+# app = Flask(__name__)
+
+# # Load the trained model and scaler
+# regmodel = pickle.load(open('regmodel.pkl', 'rb'))
+# scalar = pickle.load(open('scaling.pkl', 'rb'))
+
+# @app.route('/')
+# def home():
+#     return render_template('home.html')
+
+# @app.route('/predict_api', methods=['POST'])
+# def predict_api():
+#     data = request.json['data']
+#     print("Received JSON data:", data)
+
+#     # Convert input to numpy array and reshape
+#     input_array = np.array(list(data.values())).reshape(1, -1)
+#     new_data = scalar.transform(input_array)
+
+#     # Make prediction
+#     output = regmodel.predict(new_data)[0]
+#     print("Predicted output:", output)
+
+#     return jsonify({'prediction': float(output)})
+
+# @app.route('/predict', methods=['POST'])
+# def predict():
+#     data = [float(x) for x in request.form.values()]
+#     final_input = scalar.transform(np.array(data).reshape(1, -1))
+#     print("Final Input for prediction:", final_input)
+
+#     # Get prediction
+#     output = regmodel.predict(final_input)[0]
+    
+#     return render_template('home.html', prediction_text=f'The Predicted House Price is {output}')
+
+# if __name__ == '__main__':
+#     # Set host to "0.0.0.0" and use PORT from environment variable
+#     import os
+#     port = int(os.getenv("PORT", 5000))
+#     app.run(host="0.0.0.0", port=port, debug=True)
