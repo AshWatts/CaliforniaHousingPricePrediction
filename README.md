@@ -1,5 +1,5 @@
 # California Housing Price Prediction
-An end-to-end machine learning project for predicting California housing prices, featuring advanced implementation techniques such as Docker containerization, GitHub Actions for CI/CD, and deployment on a cloud platform. The project demonstrates the complete ML pipeline from data preprocessing and model training to scalable deployment.
+An end-to-end machine learning project for predicting California housing prices, featuring advanced implementation techniques such as Docker containerization, and using GitHub Actions for CI/CD. The project demonstrates the complete ML pipeline from data preprocessing and model training to scalable deployment.
 
 # Software and Tools Requirement
 
